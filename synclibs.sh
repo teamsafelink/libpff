@@ -14,7 +14,11 @@ IFS=" ";
 
 for LOCAL_LIB in ${LOCAL_LIBS};
 do
-	GIT_URL="${GIT_URL_PREFIX}/${LOCAL_LIB}.git";
+	if [ "$LOCAL_LIB" = libfmapi ] ; then
+		GIT_URL="https://github.com/khanderson/${LOCAL_LIB}.git";
+	else
+		GIT_URL="${GIT_URL_PREFIX}/${LOCAL_LIB}.git";
+	fi
 
 	git clone --quiet ${GIT_URL} ${LOCAL_LIB}-$$;
 

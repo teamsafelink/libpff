@@ -5148,6 +5148,8 @@ int export_handle_export_message_body(
 	}
 	if( export_format == EXPORT_FORMAT_ALL )
 	{
+		int has_error = 0;
+
 		if( has_html_body == 1 )
 		{
 			if( export_handle_export_message_body_html(
@@ -5166,7 +5168,7 @@ int export_handle_export_message_body(
 				 "%s: unable to export HTML message body.",
 				 function );
 
-				return( -1 );
+				has_error = 1;
 			}
 		}
 		if( has_rtf_body == 1 )
@@ -5187,7 +5189,7 @@ int export_handle_export_message_body(
 				 "%s: unable to export RTF message body.",
 				 function );
 
-				return( -1 );
+				has_error = 1;
 			}
 		}
 		if( has_text_body == 1 )
@@ -5208,8 +5210,12 @@ int export_handle_export_message_body(
 				 "%s: unable to export plain text message body.",
 				 function );
 
-				return( -1 );
+				has_error = 1;
 			}
+		}
+		if( has_error != 0 )
+		{
+			return( -1 );
 		}
 	}
 	else if( export_format == EXPORT_FORMAT_HTML )

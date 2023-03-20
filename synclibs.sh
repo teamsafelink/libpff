@@ -16,6 +16,8 @@ for LOCAL_LIB in ${LOCAL_LIBS};
 do
 	if [ "$LOCAL_LIB" = libfmapi ] ; then
 		GIT_URL="https://github.com/khanderson/${LOCAL_LIB}.git";
+	elif [ "$LOCAL_LIB" = libfdata ] ; then
+		GIT_URL="https://github.com/teamsafelink/${LOCAL_LIB}.git";
 	else
 		GIT_URL="${GIT_URL_PREFIX}/${LOCAL_LIB}.git";
 	fi
